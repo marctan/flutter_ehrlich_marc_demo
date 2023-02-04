@@ -12,23 +12,7 @@ class WelcomeScreen extends StatelessWidget {
           padding: const EdgeInsets.all(10.0),
           child: Column(
             children: [
-              Row(
-                children: [
-                  Image.asset(
-                    'assets/images/weather_logo.png',
-                    height: 70,
-                    width: 70,
-                    fit: BoxFit.cover,
-                  ),
-                  const SizedBox(
-                    width: 15,
-                  ),
-                  Text(
-                    Label.weatherTitle,
-                    style: Theme.of(context).textTheme.bodyText1,
-                  )
-                ],
-              ),
+              _header(context),
               const Divider(
                 thickness: 0.9,
                 color: Colors.black,
@@ -39,37 +23,61 @@ class WelcomeScreen extends StatelessWidget {
               ),
               Container(
                 margin: const EdgeInsets.all(20),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      Label.welcomeText,
-                      style: Theme.of(context).textTheme.bodyText2,
-                    ),
-                    const SizedBox(
-                      height: 30,
-                    ),
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        minimumSize: const Size(100, 40),
-                        backgroundColor: Theme.of(context).primaryColor,
-                      ),
-                      onPressed: () {},
-                      child: Text(
-                        Label.login,
-                        style: Theme.of(context).textTheme.bodyText2?.copyWith(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                            ),
-                      ),
-                    )
-                  ],
-                ),
+                child: _body(context),
               )
             ],
           ),
         ),
       ),
+    );
+  }
+
+  Column _body(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          Label.welcomeText,
+          style: Theme.of(context).textTheme.bodyText2,
+        ),
+        const SizedBox(
+          height: 30,
+        ),
+        ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            minimumSize: const Size(100, 40),
+            backgroundColor: Theme.of(context).primaryColor,
+          ),
+          onPressed: () {},
+          child: Text(
+            Label.login,
+            style: Theme.of(context).textTheme.bodyText2?.copyWith(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                ),
+          ),
+        )
+      ],
+    );
+  }
+
+  Row _header(BuildContext context) {
+    return Row(
+      children: [
+        Image.asset(
+          'assets/images/weather_logo.png',
+          height: 70,
+          width: 70,
+          fit: BoxFit.cover,
+        ),
+        const SizedBox(
+          width: 15,
+        ),
+        Text(
+          Label.weatherTitle,
+          style: Theme.of(context).textTheme.bodyText1,
+        )
+      ],
     );
   }
 }
