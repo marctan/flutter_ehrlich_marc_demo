@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:flutter_ehrlich_weather/data/datasources/local_datasource.dart';
-import 'package:flutter_ehrlich_weather/data/datasources/remote_datasource.dart';
-import 'package:flutter_ehrlich_weather/data/repositories/auth_repository.dart';
+
+import 'package:flutter_ehrlich_weather/di.dart';
 import 'package:flutter_ehrlich_weather/domain/cubit/auth_cubit.dart';
 import 'package:flutter_ehrlich_weather/presentation/screens/home_screen.dart';
 import 'package:flutter_ehrlich_weather/presentation/screens/welcome_screen.dart';
@@ -11,6 +10,8 @@ import 'package:flutter_ehrlich_weather/utils/routes.dart';
 
 void main() async {
   await dotenv.load();
+  setupServiceLocator();
+  await getIt.allReady();
   runApp(const MyApp());
 }
 
@@ -20,12 +21,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => AuthCubit(
-        repository: AuthRepository(
-          localDataSource: AuthLocalDataSource(),
-          remoteDataSource: AuthRemoteDataSource(),
-        ),
-      ),
+      create: (context) => getIt<AuthCubit>(),
       child: MaterialApp(
         routes: <String, WidgetBuilder>{
           RouteNav.WELCOME_SCREEN: (BuildContext context) =>
