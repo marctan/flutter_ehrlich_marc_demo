@@ -6,4 +6,5 @@ class Label {
   static const login = 'Login';
   static const logout = 'Logout';
   static const weatherTitle = 'Weather Forecast';
+    static const buttonDisplayWeather = 'Display Weather';
 }

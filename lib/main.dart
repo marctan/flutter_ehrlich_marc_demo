@@ -4,8 +4,10 @@ import 'package:flutter_ehrlich_weather/data/datasources/local_datasource.dart';
 import 'package:flutter_ehrlich_weather/data/datasources/remote_datasource.dart';
 import 'package:flutter_ehrlich_weather/data/repositories/auth_repository.dart';
 import 'package:flutter_ehrlich_weather/domain/cubit/auth_cubit.dart';
+import 'package:flutter_ehrlich_weather/presentation/screens/home_screen.dart';
 import 'package:flutter_ehrlich_weather/presentation/screens/welcome_screen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_ehrlich_weather/utils/routes.dart';
 
 void main() async {
   await dotenv.load();
@@ -25,6 +27,11 @@ class MyApp extends StatelessWidget {
         ),
       ),
       child: MaterialApp(
+        routes: <String, WidgetBuilder>{
+          RouteNav.WELCOME_SCREEN: (BuildContext context) =>
+              const WelcomeScreen(),
+          RouteNav.HOME_SCREEN: (BuildContext context) => const HomeScreen(),
+        },
         theme: ThemeData(
           fontFamily: 'ComicNeue',
           primaryColor: Colors.red,

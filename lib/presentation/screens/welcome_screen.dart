@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_ehrlich_weather/domain/cubit/auth_cubit.dart';
 import 'package:flutter_ehrlich_weather/presentation/components/custom_appbar.dart';
 import 'package:flutter_ehrlich_weather/utils/constants.dart';
+import 'package:flutter_ehrlich_weather/utils/routes.dart';
 
 class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({super.key});
@@ -61,6 +62,20 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 SnackBar(
                   content: Text(state.message),
                 ),
+              );
+            } else if (state.status == Status.loaded) {
+              final user = state.credentials?.user;
+              Navigator.pushReplacementNamed(
+                context,
+                RouteNav.HOME_SCREEN,
+                arguments: {
+                  'userName': user?.name ?? '',
+                  'profileUrl': user?.nickname != null
+                      ? Uri.parse(
+                          'https://github.com/${user?.nickname}',
+                        )
+                      : ''
+                },
               );
             }
           },
