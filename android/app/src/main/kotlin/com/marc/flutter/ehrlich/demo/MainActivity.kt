@@ -1,4 +1,4 @@
-package com.example.flutter_ehrlich_weather
+package com.marc.flutter.ehrlich.demo
 
 import io.flutter.embedding.android.FlutterActivity
 
