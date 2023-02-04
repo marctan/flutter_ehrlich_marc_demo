@@ -1,8 +1,24 @@
+import 'package:auth0_flutter/auth0_flutter.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_ehrlich_weather/utils/constants.dart';
 
-class WelcomeScreen extends StatelessWidget {
+class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({super.key});
+
+  @override
+  State<WelcomeScreen> createState() => _WelcomeScreenState();
+}
+
+class _WelcomeScreenState extends State<WelcomeScreen> {
+  late Auth0 auth0;
+  Credentials? _credentials;
+
+  @override
+  void initState() {
+    super.initState();
+
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +64,11 @@ class WelcomeScreen extends StatelessWidget {
             minimumSize: const Size(100, 40),
             backgroundColor: Theme.of(context).primaryColor,
           ),
-          onPressed: () {},
+          onPressed: () async {
+            final Credentials credentials = await auth0
+                .webAuthentication(scheme: 'marcehrlichdemo')
+                .login();
+          },
           child: Text(
             Label.login,
             style: Theme.of(context).textTheme.bodyText2?.copyWith(
