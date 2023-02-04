@@ -20,15 +20,12 @@ class WelcomeScreen extends StatelessWidget {
                     width: 70,
                     fit: BoxFit.cover,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 15,
                   ),
-                  const Text(
-                    'Weather Forecast',
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                    ),
+                  Text(
+                    Label.weatherTitle,
+                    style: Theme.of(context).textTheme.bodyText1,
                   )
                 ],
               ),
@@ -45,7 +42,10 @@ class WelcomeScreen extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text(Label.welcomeText),
+                    Text(
+                      Label.welcomeText,
+                      style: Theme.of(context).textTheme.bodyText2,
+                    ),
                     const SizedBox(
                       height: 30,
                     ),
@@ -55,7 +55,13 @@ class WelcomeScreen extends StatelessWidget {
                         backgroundColor: Theme.of(context).primaryColor,
                       ),
                       onPressed: () {},
-                      child: const Text('Login'),
+                      child: Text(
+                        Label.login,
+                        style: Theme.of(context).textTheme.bodyText2?.copyWith(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                            ),
+                      ),
                     )
                   ],
                 ),
