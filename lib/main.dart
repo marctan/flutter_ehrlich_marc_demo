@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_ehrlich_weather/welcome_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -9,21 +10,17 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Home(),
-    );
-  }
-}
-
-class Home extends StatelessWidget {
-  const Home({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: Text('Hello World'),
+    return MaterialApp(
+      theme: ThemeData(
+        primaryColor: Colors.red,
+        colorScheme: ColorScheme.fromSwatch().copyWith(
+          secondary: Colors.redAccent,
+        ),
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Colors.red,
+        ),
       ),
+      home: const WelcomeScreen(),
     );
   }
 }
