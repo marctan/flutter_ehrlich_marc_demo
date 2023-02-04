@@ -12,12 +12,17 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
+        fontFamily: 'ComicNeue',
         primaryColor: Colors.red,
         colorScheme: ColorScheme.fromSwatch().copyWith(
           secondary: Colors.redAccent,
         ),
         appBarTheme: const AppBarTheme(
           backgroundColor: Colors.red,
+        ),
+        textTheme: const TextTheme(
+          bodyText1: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+          bodyText2: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
         ),
       ),
       home: const WelcomeScreen(),
