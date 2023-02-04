@@ -25,9 +25,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final args =
-        ModalRoute.of(context)?.settings.arguments as Map<String, dynamic>;
-
     return SafeArea(
       child: Scaffold(
         body: Padding(
@@ -50,12 +47,12 @@ class _HomeScreenState extends State<HomeScreen> {
                   }
                 },
                 builder: (context, state) => CustomAppBar(
-                  title: args['userName'],
+                  title: cubit.getName(),
                   showLogout: true,
                   onClick: () => cubit.logout(),
                   isLoading: state.status == Status.loading,
                   showUrl: true,
-                  url: args['profileUrl'],
+                  url: cubit.getUrl(),
                 ),
               ),
               _body(context)

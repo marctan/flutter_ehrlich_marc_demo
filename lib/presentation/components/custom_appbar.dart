@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ehrlich_weather/utils/constants.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:url_launcher/url_launcher_string.dart';
 
 class CustomAppBar extends StatelessWidget {
   const CustomAppBar({

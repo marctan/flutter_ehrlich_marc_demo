@@ -1,12 +1,29 @@
-import 'package:auth0_flutter/auth0_flutter.dart';
+import 'package:flutter_ehrlich_weather/di.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthLocalDataSource {
-  Future<Credentials> login() async {
-    //todo implement save token here
-    throw UnimplementedError();
+  final pref = getIt<SharedPreferences>();
+  Future<void> saveData(String token, String nickname, String name) async {
+    await pref.setString('token', token);
+    await pref.setString('nickname', nickname);
+    await pref.setString('name', name);
   }
 
-  Future<void> logout() async {
-    //todo implement remove token here
+  Future<void> clearUserData() async {
+    await pref.remove('token');
+    await pref.remove('nickname');
+    await pref.remove('name');
+  }
+
+  bool isTokenExist() {
+    return pref.containsKey('token');
+  }
+
+  String getName() {
+    return pref.getString('name') ?? '';
+  }
+
+  String getNickname() {
+    return pref.getString('nickname') ?? '';
   }
 }

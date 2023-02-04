@@ -30,4 +30,19 @@ class AuthCubit extends Cubit<AuthState> {
       emit(state.copyWith(status: Status.error, message: e.toString()));
     }
   }
+
+  String getName() {
+    return repository.getName();
+  }
+
+  Uri getUrl() {
+    final nickName = repository.getNickname();
+    return Uri.parse(
+      'https://github.com/$nickName',
+    );
+  }
+
+  bool isLoggedIn() {
+    return repository.isLoggedIn();
+  }
 }

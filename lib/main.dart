@@ -42,7 +42,9 @@ class MyApp extends StatelessWidget {
             bodyText2: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
           ),
         ),
-        home: const WelcomeScreen(),
+        home: getIt<AuthCubit>().isLoggedIn()
+            ? const HomeScreen()
+            : const WelcomeScreen(),
       ),
     );
   }

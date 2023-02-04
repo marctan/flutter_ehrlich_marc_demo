@@ -64,18 +64,9 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 ),
               );
             } else if (state.status == Status.loaded) {
-              final user = state.credentials?.user;
               Navigator.pushReplacementNamed(
                 context,
                 RouteNav.HOME_SCREEN,
-                arguments: {
-                  'userName': user?.name ?? '',
-                  'profileUrl': user?.nickname != null
-                      ? Uri.parse(
-                          'https://github.com/${user?.nickname}',
-                        )
-                      : ''
-                },
               );
             }
           },

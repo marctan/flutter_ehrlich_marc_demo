@@ -14,11 +14,35 @@ class AuthRepository implements AuthRepositories {
 
   @override
   Future<Credentials> login() async {
-    return await remoteDataSource.login();
+    final credentials = await remoteDataSource.login();
+    //save token to sharedPref. we will be using this during login
+    await localDataSource.saveData(
+      credentials.accessToken,
+      credentials.user.nickname!,
+      credentials.user.name!,
+    );
+    return credentials;
   }
 
   @override
   Future<void> logout() async {
+    //remove token data from shared pref
+    await localDataSource.clearUserData();
     return await remoteDataSource.logout();
+  }
+
+  @override
+  bool isLoggedIn() {
+    return localDataSource.isTokenExist();
+  }
+
+  @override
+  String getName() {
+    return localDataSource.getName();
+  }
+
+  @override
+  String getNickname() {
+    return localDataSource.getNickname();
   }
 }
