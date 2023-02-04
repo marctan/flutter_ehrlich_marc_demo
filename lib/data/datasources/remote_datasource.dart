@@ -13,6 +13,8 @@ class AuthRemoteDataSource {
       final Credentials credentials =
           await _auth0.webAuthentication(scheme: _scheme).login();
       return credentials;
+    } on WebAuthenticationException catch (e) {
+      throw (e.message);
     } catch (_) {
       throw ('Error logging in!');
     }
@@ -20,7 +22,9 @@ class AuthRemoteDataSource {
 
   Future<void> logout() async {
     try {
-    return await _auth0.webAuthentication(scheme: _scheme).logout();
+      return await _auth0.webAuthentication(scheme: _scheme).logout();
+    } on WebAuthenticationException catch (e) {
+      throw (e.message);
     } catch (_) {
       throw ('Error logging out!');
     }
