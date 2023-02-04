@@ -4,5 +4,6 @@ class Label {
       'and view the weather in your city.';
 
   static const login = 'Login';
+  static const logout = 'Logout';
   static const weatherTitle = 'Weather Forecast';
 }
