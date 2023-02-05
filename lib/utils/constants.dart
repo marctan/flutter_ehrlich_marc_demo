@@ -6,5 +6,14 @@ class Label {
   static const login = 'Login';
   static const logout = 'Logout';
   static const weatherTitle = 'Weather Forecast';
-    static const buttonDisplayWeather = 'Display Weather';
+  static const buttonDisplayWeather = 'Display Weather';
+  static const weatherCity = 'City';
+  static const temp = 'Temp';
+  static const windSpeed = 'Wind Speed';
+  static const clouds = 'Clouds';
+  static const hpa = 'hpa';
+  static const description = 'Description';
+  static const lat = 'lat';
+  static const lon = 'lon';
+  static const weatherInfo = 'Weather Info';
 }
