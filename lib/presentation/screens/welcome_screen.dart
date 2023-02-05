@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_ehrlich_weather/domain/cubit/auth_cubit.dart';
 import 'package:flutter_ehrlich_weather/presentation/components/custom_appbar.dart';
+import 'package:flutter_ehrlich_weather/presentation/components/drawer.dart';
 import 'package:flutter_ehrlich_weather/utils/constants.dart';
 import 'package:flutter_ehrlich_weather/utils/routes.dart';
 
@@ -25,6 +26,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        appBar: AppBar(),
+        drawer: const MyDrawer(),
         body: Padding(
           padding: const EdgeInsets.all(10.0),
           child: Column(
