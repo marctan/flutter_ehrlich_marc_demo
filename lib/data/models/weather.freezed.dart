@@ -20,7 +20,7 @@ Weather _$WeatherFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Weather {
-  Map<String, String> get coord => throw _privateConstructorUsedError;
+  Map<String, double> get coord => throw _privateConstructorUsedError;
   Map<String, int> get clouds => throw _privateConstructorUsedError;
   Wind? get wind => throw _privateConstructorUsedError;
   List<WeatherDescription>? get weather =>
@@ -40,7 +40,7 @@ abstract class $WeatherCopyWith<$Res> {
       _$WeatherCopyWithImpl<$Res, Weather>;
   @useResult
   $Res call(
-      {Map<String, String> coord,
+      {Map<String, double> coord,
       Map<String, int> clouds,
       Wind? wind,
       List<WeatherDescription>? weather,
@@ -75,7 +75,7 @@ class _$WeatherCopyWithImpl<$Res, $Val extends Weather>
       coord: null == coord
           ? _value.coord
           : coord // ignore: cast_nullable_to_non_nullable
-              as Map<String, String>,
+              as Map<String, double>,
       clouds: null == clouds
           ? _value.clouds
           : clouds // ignore: cast_nullable_to_non_nullable
@@ -132,7 +132,7 @@ abstract class _$$_WeatherCopyWith<$Res> implements $WeatherCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {Map<String, String> coord,
+      {Map<String, double> coord,
       Map<String, int> clouds,
       Wind? wind,
       List<WeatherDescription>? weather,
@@ -166,7 +166,7 @@ class __$$_WeatherCopyWithImpl<$Res>
       coord: null == coord
           ? _value._coord
           : coord // ignore: cast_nullable_to_non_nullable
-              as Map<String, String>,
+              as Map<String, double>,
       clouds: null == clouds
           ? _value._clouds
           : clouds // ignore: cast_nullable_to_non_nullable
@@ -195,7 +195,7 @@ class __$$_WeatherCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_Weather implements _Weather {
   const _$_Weather(
-      {final Map<String, String> coord = const {},
+      {final Map<String, double> coord = const {},
       final Map<String, int> clouds = const {},
       this.wind,
       final List<WeatherDescription>? weather,
@@ -208,10 +208,10 @@ class _$_Weather implements _Weather {
   factory _$_Weather.fromJson(Map<String, dynamic> json) =>
       _$$_WeatherFromJson(json);
 
-  final Map<String, String> _coord;
+  final Map<String, double> _coord;
   @override
   @JsonKey()
-  Map<String, String> get coord {
+  Map<String, double> get coord {
     if (_coord is EqualUnmodifiableMapView) return _coord;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableMapView(_coord);
@@ -291,7 +291,7 @@ class _$_Weather implements _Weather {
 
 abstract class _Weather implements Weather {
   const factory _Weather(
-      {final Map<String, String> coord,
+      {final Map<String, double> coord,
       final Map<String, int> clouds,
       final Wind? wind,
       final List<WeatherDescription>? weather,
@@ -301,7 +301,7 @@ abstract class _Weather implements Weather {
   factory _Weather.fromJson(Map<String, dynamic> json) = _$_Weather.fromJson;
 
   @override
-  Map<String, String> get coord;
+  Map<String, double> get coord;
   @override
   Map<String, int> get clouds;
   @override

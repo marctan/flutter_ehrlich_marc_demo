@@ -8,7 +8,7 @@ part 'weather.g.dart';
 @freezed
 class Weather with _$Weather {
   const factory Weather({
-    @Default({}) Map<String, String> coord,
+    @Default({}) Map<String, double> coord,
     @Default({}) Map<String, int> clouds,
     Wind? wind,
     List<WeatherDescription>? weather,

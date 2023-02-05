@@ -8,7 +8,7 @@ part of 'weather.dart';
 
 _$_Weather _$$_WeatherFromJson(Map<String, dynamic> json) => _$_Weather(
       coord: (json['coord'] as Map<String, dynamic>?)?.map(
-            (k, e) => MapEntry(k, e as String),
+            (k, e) => MapEntry(k, (e as num).toDouble()),
           ) ??
           const {},
       clouds: (json['clouds'] as Map<String, dynamic>?)?.map(
