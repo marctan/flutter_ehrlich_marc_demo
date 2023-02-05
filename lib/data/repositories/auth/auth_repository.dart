@@ -1,6 +1,6 @@
-import 'package:auth0_flutter_platform_interface/src/credentials.dart';
-import 'package:flutter_ehrlich_weather/data/datasources/local_datasource.dart';
-import 'package:flutter_ehrlich_weather/data/datasources/remote_datasource.dart';
+import 'package:auth0_flutter/auth0_flutter.dart';
+import 'package:flutter_ehrlich_weather/data/datasources/auth/local_datasource.dart';
+import 'package:flutter_ehrlich_weather/data/datasources/auth/remote_datasource.dart';
 import 'package:flutter_ehrlich_weather/data/repositories/repositories.dart';
 
 class AuthRepository implements AuthRepositories {

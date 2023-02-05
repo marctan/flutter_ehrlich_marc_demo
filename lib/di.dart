@@ -1,6 +1,6 @@
-import 'package:flutter_ehrlich_weather/data/datasources/local_datasource.dart';
-import 'package:flutter_ehrlich_weather/data/datasources/remote_datasource.dart';
-import 'package:flutter_ehrlich_weather/data/repositories/auth_repository.dart';
+import 'package:flutter_ehrlich_weather/data/datasources/auth/local_datasource.dart';
+import 'package:flutter_ehrlich_weather/data/datasources/auth/remote_datasource.dart';
+import 'package:flutter_ehrlich_weather/data/repositories/auth/auth_repository.dart';
 import 'package:flutter_ehrlich_weather/data/repositories/repositories.dart';
 import 'package:flutter_ehrlich_weather/domain/cubit/auth_cubit.dart';
 import 'package:get_it/get_it.dart';
