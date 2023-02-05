@@ -11,6 +11,8 @@ class CustomAppBar extends StatelessWidget {
     this.showUrl = false,
     this.url,
     this.onClick,
+    this.showBottomSpace = true,
+    this.showBackButton = false,
   });
 
   final String title;
@@ -19,6 +21,8 @@ class CustomAppBar extends StatelessWidget {
   final VoidCallback? onClick;
   final bool isLoading;
   final bool showUrl;
+  final bool showBottomSpace;
+  final bool showBackButton;
 
   @override
   Widget build(BuildContext context) {
@@ -26,6 +30,14 @@ class CustomAppBar extends StatelessWidget {
       children: [
         Row(
           children: [
+            if (showBackButton)
+              IconButton(
+                onPressed: () => Navigator.pop(context),
+                icon: const Icon(
+                  Icons.chevron_left,
+                  size: 30,
+                ),
+              ),
             Image.asset(
               'assets/images/weather_logo.png',
               height: 70,
@@ -91,9 +103,10 @@ class CustomAppBar extends StatelessWidget {
           color: Colors.black,
           height: 1,
         ),
-        const SizedBox(
-          height: 30,
-        ),
+        if (showBottomSpace)
+          const SizedBox(
+            height: 30,
+          ),
       ],
     );
   }
