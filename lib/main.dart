@@ -3,6 +3,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 import 'package:flutter_ehrlich_weather/di.dart';
 import 'package:flutter_ehrlich_weather/domain/cubit/auth_cubit.dart';
+import 'package:flutter_ehrlich_weather/domain/cubit/weather_cubit.dart';
 import 'package:flutter_ehrlich_weather/presentation/screens/home_screen.dart';
 import 'package:flutter_ehrlich_weather/presentation/screens/welcome_screen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -20,8 +21,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => getIt<AuthCubit>(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => getIt<AuthCubit>(),
+        ),
+        BlocProvider(
+          create: (context) => getIt<WeatherCubit>(),
+        )
+      ],
       child: MaterialApp(
         routes: <String, WidgetBuilder>{
           RouteNav.WELCOME_SCREEN: (BuildContext context) =>
