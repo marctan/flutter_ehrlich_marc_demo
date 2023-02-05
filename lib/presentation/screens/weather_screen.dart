@@ -77,87 +77,89 @@ class _WeatherScreenState extends State<WeatherScreen> {
                         ),
                         Padding(
                           padding: const EdgeInsets.only(bottom: 7.0),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Container(
-                                margin:
-                                    const EdgeInsets.symmetric(vertical: 40),
-                                child: Material(
-                                  borderRadius: BorderRadius.circular(10),
-                                  elevation: 10,
-                                  child: Container(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 30),
-                                    margin: const EdgeInsets.symmetric(
-                                        vertical: 30),
-                                    height: deviceSize.height * 0.60,
-                                    width: deviceSize.width * 0.8,
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.center,
-                                          children: [
-                                            _buildInfo(weather?.name ?? '',
-                                                Label.weatherCity),
-                                            if (icon != null)
-                                              Container(
-                                                color: Colors.redAccent,
-                                                child: Image.network(
-                                                  fit: BoxFit.cover,
-                                                  height: 65,
-                                                  'http://openweathermap.org/img/wn/$icon@2x.png',
-                                                ),
-                                              )
-                                          ],
-                                        ),
-                                        _buildInfo(
-                                          '${weather?.mainWeather?.temp?.toString()} °С',
-                                          Label.temp,
-                                        ),
-                                        _buildInfo(
-                                          '${weather?.wind?.speed} m/s',
-                                          Label.windSpeed,
-                                        ),
-                                        _buildInfo(
-                                          '${weather?.clouds['all']} %',
-                                          Label.clouds,
-                                        ),
-                                        _buildInfo(
-                                          weather?.mainWeather?.pressure
-                                                  ?.toString() ??
-                                              '',
-                                          Label.hpa,
-                                        ),
-                                        _buildInfo(
-                                          weather?.weather?.first.description
-                                                  ?.toUpperCase() ??
-                                              '',
-                                          Label.description,
-                                        ),
-                                        _buildInfo(
-                                          weather?.coord['lon']?.toString() ??
-                                              '',
-                                          Label.lon,
-                                        ),
-                                        _buildInfo(
-                                          weather?.coord['lat']?.toString() ??
-                                              '',
-                                          Label.lat,
-                                        ),
-                                      ],
+                          child: SingleChildScrollView(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Container(
+                                  margin:
+                                      const EdgeInsets.symmetric(vertical: 40),
+                                  child: Material(
+                                    borderRadius: BorderRadius.circular(10),
+                                    elevation: 10,
+                                    child: Container(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 30),
+                                      margin: const EdgeInsets.symmetric(
+                                          vertical: 30),
+                                      height: deviceSize.height * 0.60,
+                                      width: deviceSize.width * 0.8,
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.center,
+                                            children: [
+                                              _buildInfo(weather?.name ?? '',
+                                                  Label.weatherCity),
+                                              if (icon != null)
+                                                Container(
+                                                  color: Colors.redAccent,
+                                                  child: Image.network(
+                                                    fit: BoxFit.cover,
+                                                    height: 65,
+                                                    'http://openweathermap.org/img/wn/$icon@2x.png',
+                                                  ),
+                                                )
+                                            ],
+                                          ),
+                                          _buildInfo(
+                                            '${weather?.mainWeather?.temp?.toString()} °С',
+                                            Label.temp,
+                                          ),
+                                          _buildInfo(
+                                            '${weather?.wind?.speed} m/s',
+                                            Label.windSpeed,
+                                          ),
+                                          _buildInfo(
+                                            '${weather?.clouds['all']} %',
+                                            Label.clouds,
+                                          ),
+                                          _buildInfo(
+                                            weather?.mainWeather?.pressure
+                                                    ?.toString() ??
+                                                '',
+                                            Label.hpa,
+                                          ),
+                                          _buildInfo(
+                                            weather?.weather?.first.description
+                                                    ?.toUpperCase() ??
+                                                '',
+                                            Label.description,
+                                          ),
+                                          _buildInfo(
+                                            weather?.coord['lon']?.toString() ??
+                                                '',
+                                            Label.lon,
+                                          ),
+                                          _buildInfo(
+                                            weather?.coord['lat']?.toString() ??
+                                                '',
+                                            Label.lat,
+                                          ),
+                                        ],
+                                      ),
                                     ),
                                   ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         ),
                       ],
