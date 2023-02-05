@@ -8,6 +8,9 @@ import 'package:http/http.dart';
 
 class WeatherRemoteDataSource {
   Future<Weather> getWeather(String city) async {
+    if (city.isEmpty || city == '') {
+      throw ('Invalid City!');
+    }
     final host = Uri.parse('$DOMAIN$CURRENT_WEATHER').replace(queryParameters: {
       'q': city,
       'appid': dotenv.env['APPID'],

@@ -4,6 +4,7 @@ import 'package:flutter_ehrlich_weather/domain/cubit/auth_cubit.dart'
     hide Status;
 import 'package:flutter_ehrlich_weather/domain/cubit/weather_cubit.dart';
 import 'package:flutter_ehrlich_weather/presentation/components/custom_appbar.dart';
+import 'package:flutter_ehrlich_weather/presentation/components/drawer.dart';
 import 'package:flutter_ehrlich_weather/utils/constants.dart';
 
 class WeatherScreen extends StatefulWidget {
@@ -32,6 +33,8 @@ class _WeatherScreenState extends State<WeatherScreen> {
 
     return SafeArea(
       child: Scaffold(
+        appBar: AppBar(),
+        drawer: const MyDrawer(),
         body: BlocConsumer<WeatherCubit, WeatherState>(
           listener: (context, state) {
             if (state.status == Status.error) {

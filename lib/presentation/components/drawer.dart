@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_ehrlich_weather/di.dart';
+import 'package:flutter_ehrlich_weather/domain/cubit/auth_cubit.dart';
+import 'package:flutter_ehrlich_weather/presentation/components/alert_dialog.dart';
 import 'package:flutter_ehrlich_weather/presentation/screens/weather_screen.dart';
 import 'package:flutter_ehrlich_weather/utils/routes.dart';
 
@@ -24,7 +27,7 @@ class MyDrawer extends StatelessWidget {
               style: TextStyle(fontSize: 16),
             ),
             onTap: () {
-              Navigator.pushNamed(context, RouteNav.WELCOME_SCREEN);
+              Navigator.pushReplacementNamed(context, RouteNav.WELCOME_SCREEN);
             },
           ),
           ListTile(
@@ -33,8 +36,20 @@ class MyDrawer extends StatelessWidget {
               'Home',
               style: TextStyle(fontSize: 16),
             ),
-            onTap: () {
-              Navigator.pushNamed(context, RouteNav.HOME_SCREEN);
+            onTap: () async {
+              if (getIt<AuthCubit>().isLoggedIn()) {
+                Navigator.pushReplacementNamed(context, RouteNav.HOME_SCREEN);
+              } else {
+                showDialog(
+                  context: context,
+                  builder: ((context) => CustomAlertDialog(
+                        title: 'Error',
+                        content: 'Please login first!',
+                        onPressed: () {},
+                        isError: true,
+                      )),
+                );
+              }
             },
           ),
           ListTile(
@@ -44,12 +59,24 @@ class MyDrawer extends StatelessWidget {
               style: TextStyle(fontSize: 16),
             ),
             onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const WeatherScreen(city: ''),
-                ),
-              );
+              if (getIt<AuthCubit>().isLoggedIn()) {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const WeatherScreen(city: ''),
+                  ),
+                );
+              } else {
+                showDialog(
+                  context: context,
+                  builder: ((context) => CustomAlertDialog(
+                        title: 'Error',
+                        content: 'Please login first!',
+                        onPressed: () {},
+                        isError: true,
+                      )),
+                );
+              }
             },
           ),
         ],
