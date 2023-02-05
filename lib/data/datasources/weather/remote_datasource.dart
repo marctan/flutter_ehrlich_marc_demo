@@ -8,8 +8,11 @@ import 'package:http/http.dart';
 
 class WeatherRemoteDataSource {
   Future<Weather> getWeather(String city) async {
-    final host = Uri.parse('$DOMAIN$CURRENT_WEATHER')
-        .replace(queryParameters: {'q': city, 'appid': dotenv.env['APPID']});
+    final host = Uri.parse('$DOMAIN$CURRENT_WEATHER').replace(queryParameters: {
+      'q': city,
+      'appid': dotenv.env['APPID'],
+      'units': 'metric',
+    });
 
     try {
       final result = await getIt<Client>().get(host);
