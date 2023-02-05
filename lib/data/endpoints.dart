@@ -2,4 +2,4 @@
 
 const String DOMAIN = 'https://api.openweathermap.org/data/2.5';
 
-const String CURRENT_WEATHER = '/weather?q={city}&appid={appid}';
+const String CURRENT_WEATHER = '/weather';

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_ehrlich_weather/domain/cubit/auth_cubit.dart';
 import 'package:flutter_ehrlich_weather/presentation/components/custom_appbar.dart';
+import 'package:flutter_ehrlich_weather/presentation/screens/weather_screen.dart';
+import 'package:flutter_ehrlich_weather/presentation/screens/welcome_screen.dart';
 import 'package:flutter_ehrlich_weather/utils/constants.dart';
 import 'package:flutter_ehrlich_weather/utils/routes.dart';
 
@@ -93,7 +95,17 @@ class _HomeScreenState extends State<HomeScreen> {
               minimumSize: const Size(100, 40),
               backgroundColor: Theme.of(context).primaryColor,
             ),
-            onPressed: () {},
+            onPressed: () {
+              if (cityController.text.isNotEmpty) {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => WeatherScreen(
+                        city: cityController.text,
+                      ),
+                    ));
+              }
+            },
             child: Text(
               Label.buttonDisplayWeather,
               style: Theme.of(context).textTheme.bodyText2?.copyWith(
