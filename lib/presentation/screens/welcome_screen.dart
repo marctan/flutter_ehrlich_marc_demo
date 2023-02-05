@@ -75,36 +75,39 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
           },
           builder: (context, state) {
             final isLoading = state.status == Status.loading;
-            return ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                minimumSize: const Size(100, 40),
-                backgroundColor: Theme.of(context).primaryColor,
-              ),
-              //disable button click if the previous action is not done yet
-              onPressed: isLoading
-                  ? null
-                  : () {
-                      cubit.login();
-                    },
-              //show loading indicator during login
-              child: isLoading
-                  ? const SizedBox(
-                      height: 23,
-                      width: 23,
-                      child: Center(
-                        child: CircularProgressIndicator(
-                          color: Colors.white,
-                        ),
-                      ),
-                    )
-                  : Text(
-                      Label.login,
-                      style: Theme.of(context).textTheme.bodyText2?.copyWith(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                          ),
+            return cubit.isLoggedIn()
+                ? const SizedBox.shrink()
+                : ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      minimumSize: const Size(100, 40),
+                      backgroundColor: Theme.of(context).primaryColor,
                     ),
-            );
+                    //disable button click if the previous action is not done yet
+                    onPressed: isLoading
+                        ? null
+                        : () {
+                            cubit.login();
+                          },
+                    //show loading indicator during login
+                    child: isLoading
+                        ? const SizedBox(
+                            height: 23,
+                            width: 23,
+                            child: Center(
+                              child: CircularProgressIndicator(
+                                color: Colors.white,
+                              ),
+                            ),
+                          )
+                        : Text(
+                            Label.login,
+                            style:
+                                Theme.of(context).textTheme.bodyText2?.copyWith(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                          ),
+                  );
           },
         )
       ],
