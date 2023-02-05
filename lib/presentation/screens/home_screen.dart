@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_ehrlich_weather/domain/cubit/auth_cubit.dart';
 import 'package:flutter_ehrlich_weather/presentation/components/custom_appbar.dart';
 import 'package:flutter_ehrlich_weather/presentation/screens/weather_screen.dart';
-import 'package:flutter_ehrlich_weather/presentation/screens/welcome_screen.dart';
 import 'package:flutter_ehrlich_weather/utils/constants.dart';
 import 'package:flutter_ehrlich_weather/utils/routes.dart';
 
@@ -23,6 +22,12 @@ class _HomeScreenState extends State<HomeScreen> {
     super.initState();
     cubit = context.read<AuthCubit>();
     cityController = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    cityController.dispose();
+    super.dispose();
   }
 
   @override
@@ -97,13 +102,21 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             onPressed: () {
               if (cityController.text.isNotEmpty) {
+                String city = cityController.text;
+                cityController.clear();
                 Navigator.push(
                     context,
                     MaterialPageRoute(
                       builder: (context) => WeatherScreen(
-                        city: cityController.text,
+                        city: city,
                       ),
                     ));
+              } else {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                    content: Text('Please enter a city'),
+                  ),
+                );
               }
             },
             child: Text(
